@@ -24,6 +24,8 @@ spec:
         - /bin/bash
         - -c
         env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: "dianald"
         - name: MONGO_INITDB_ROOT_PASSWORD
           value: "$DianaLpz"  
         ports:
