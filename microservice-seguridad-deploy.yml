@@ -3,26 +3,22 @@ kind: Deployment
 metadata:
   name: microservice-seguridad-deploy
   labels:
-    name: microservice-seguridad-deploy
-    app: microservice
-spec: 
+    app: microservice-seguridad
+spec:
   replicas: 2
   selector:
     matchLabels:
       app: microservice-seguridad
-      type: microservice
   template:
     metadata:
-      name: microservice-seguridad-pod
       labels:
         app: microservice-seguridad
-        type: microservice 
-    spec: 
-    containers:
-    - name: microservicio-seguridad
-      image: diananldd/serviciosapiseguridad:latest
-      ports:
+    spec:
+      containers:
+      - name: microservicio-seguridad
+        image: diananldd/serviciosapiseguridad:latest
+        ports:
         - containerPort: 80
-      env:
+        env:
         - name: ConnectionStrings__ConexionDB
-          value: Server=mssql-service:Database=Seguridad;User=sa;Password=$DianaLpz
+          value: Server=mssql-service;Database=Seguridad;User=sa;Password=$DianaLpz
