@@ -3,29 +3,28 @@ kind: Deployment
 metadata: 
   name: mssql-deploy
   labels:
-    name: mssql-deploy
     app: microservice-seguridad
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: microservice-seguridad
-      name: mssql-pod 
-    template:
-      metadata:
+      name: mssql-pod
+  template:
+    metadata:
+      labels:
+        app: microservice-seguridad
         name: mssql-pod
-        labels:
-          app: microservice-seguridad
-          name: mssql-pod 
-      spec: 
-        containers:
-        - name: mssql
-          image: mcr.microsoft.com/mssql/server
-          ports:
-            - containerPort: 1433
-          env:
-            - name: ACEPT_EULA
-              value: "Y"
-            - name: SA_PASSWORD
-              value:  "$DianaLpz"
+    spec: 
+      containers:
+      - name: mssql
+        image: mcr.microsoft.com/mssql/server
+        ports:
+        - containerPort: 1433
+        env:
+        - name: ACCEPT_EULA
+          value: "Y"
+        - name: SA_PASSWORD
+          value: "$DianaLpz"
+
 
