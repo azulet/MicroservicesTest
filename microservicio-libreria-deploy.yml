@@ -3,26 +3,22 @@ kind: Deployment
 metadata:
   name: microservice-libreria-deploy
   labels:
-    name: microservice-libreria-deploy
-    app: microservice
-spec: 
+    app: microservice-libreria
+spec:
   replicas: 2
   selector:
     matchLabels:
       app: microservice-libreria
-      type: microservice
   template:
     metadata:
-      name: microservice-libreria-pod
       labels:
         app: microservice-libreria
-        type: microservice 
-    spec: 
+    spec:
       containers:
       - name: microservicio-libreria
         image: diananldd/serviciosapilibreria:latest
         ports:
-          - containerPort: 80
+        - containerPort: 80
         env:
-          - name: MongoDb__ConnectionString
-            value: mongodb://DianaLpz:$DianaLpz2025@mongo-service:27017
+        - name: MongoDb__ConnectionString
+          value: mongodb://DianaLpz:$DianaLpz2025@mongo-service:27017
